@@ -1,0 +1,46 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 24,
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-right": ["custom/vpn", "custom/spotify", "pulseaudio", "cpu", "memory", "tray", "clock"],
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "CPU: {usage}%"
+    },
+    "memory": {
+        "format": "Memory: {}%"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "🔈",
+        "format-icons": {
+            "headphones": "🎧",
+            "headset": "🎧",
+            "default": ["🔉", "🔊"]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/vpn": {
+	"format": "🔑 {}",
+	"max-length": 30,
+	"interval": 5,
+	"exec": "$HOME/.config/waybar/vpn.sh status 2> /dev/null",
+	"on-click": "$HOME/.config/waybar/vpn.sh"
+   },
+    "custom/spotify": {
+        "format": " {}",
+        "max-length": 40,
+        "interval": 5,
+        "exec": "$HOME/.config/waybar/spotify.sh 2> /dev/null",
+        "exec-if": "pgrep spotify",
+	"on-click": "hyprland_show_app Spotify"
+    }
+}
