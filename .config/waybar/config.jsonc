@@ -31,16 +31,16 @@
     "custom/vpn": {
 	"format": "🔑 {}",
 	"max-length": 30,
-	"interval": 5,
+	"interval": 3,
 	"exec": "status=$(mullvad status | head -n 1); echo \"$status\" | awk '{if ($0 ~ /Disconnected/) print \"Disconnected\"; else print $3}'",
 	"on-click": "mullvad connect",
 	"on-double-click": "mullvad reconnect",
-	"on-click-right": "mulllvad disconnect"
+	"on-click-right": "mullvad disconnect"
    },
     "custom/spotify": {
         "format": " {}",
         "max-length": 40,
-        "interval": 5,
+        "interval": 3,
         "exec": "$HOME/.config/waybar/spotify.sh 2> /dev/null",
         "exec-if": "pgrep spotify",
 	"on-click": "hyprland_show_app Spotify"
