@@ -7,12 +7,9 @@ metadata=$(gdbus call --session --dest org.mpris.MediaPlayer2.spotify --object-p
 artist=$(echo "$metadata" | sed -n "s/.*'xesam:artist': <\['\([^']*\)'\]>.*/\1/p")
 title=$(echo "$metadata" | sed -n "s/.*'xesam:title': <'\([^']*\)'>.*/\1/p")
 
-# Check if artist and title are empty
+# Check if artist or the title is empty
 if [[ -z "$artist" || -z "$title" ]]; then
     echo "Paused"
-    exit 1
+else
+    echo "$artist - $title"
 fi
-
-# Print the artist and title
-echo "$artist - $title"
-
