@@ -9,7 +9,7 @@
         "spacing": 10
     },
     "clock": {
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%Y-%m-%d %H:%M}"
     },
     "cpu": {
         "format": "CPU: {usage}%"
@@ -32,8 +32,10 @@
 	"format": "🔑 {}",
 	"max-length": 30,
 	"interval": 5,
-	"exec": "$HOME/.config/waybar/vpn.sh status 2> /dev/null",
-	"on-click": "$HOME/.config/waybar/vpn.sh"
+	"exec": "status=$(mullvad status | head -n 1); echo \"$status\" | awk '{if ($0 ~ /Disconnected/) print \"Disconnected\"; else print $3}'",
+	"on-click": "mullvad connect",
+	"on-double-click": "mullvad reconnect",
+	"on-click-right": "mulllvad disconnect"
    },
     "custom/spotify": {
         "format": " {}",
